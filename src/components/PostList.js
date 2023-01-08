@@ -4,22 +4,32 @@ import {Post} from './Post'
 import { PaginationButtonsList } from './PaginationButtonsList';
 
 const PostList = () => {
+    const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
     const [posts , setPosts] = useState([]);
+    
     useEffect(()=>{
-        fetchPosts(page,5).then(data => setPosts(data))
+        setLoading(true)
+        fetchPosts(page,5).then(data => setPosts(data)).then(()=>{
+            setLoading(false)
+            //console.log("kkk")
+        })
+       
         //console.log(data)
+
+        
     },[page])
     
     return (
         <>
         
-            {posts.map((post,index) => {
+            {loading? <div className='loader'>Loading</div> : posts.map((post,index) => {
                 return (
                     <Post key={index} post={post}/>
                 )
             })}
-            <PaginationButtonsList activePage={page} changePage={setPage}/>
+            {!loading && <PaginationButtonsList activePage={page} changePage={setPage}/>}
+            
         </>
     )
 }
