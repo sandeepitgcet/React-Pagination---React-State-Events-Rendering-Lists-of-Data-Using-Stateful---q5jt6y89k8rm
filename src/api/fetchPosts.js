@@ -1,5 +1,8 @@
 const fetchPosts = async (page, limit) => {
-    // optionally write fetching logic here or somewhere else
+    const URL = 'https://jsonplaceholder.typicode.com/posts?_page='+page+'&_limit='+limit;
+    const data = await (fetch(URL).then(response => response.json()));
+    console.log(typeof data);
+    return data;
 }
 
 export { fetchPosts }
