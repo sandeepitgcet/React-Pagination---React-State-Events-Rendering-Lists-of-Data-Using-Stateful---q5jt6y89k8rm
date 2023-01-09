@@ -28,7 +28,7 @@ const PostList = () => {
                     <Post key={index} post={post}/>
                 )
             })}
-            {!loading && <PaginationButtonsList activePage={page} changePage={setPage}/>}
+            {<PaginationButtonsList activePage={page} changePage={setPage}/>}
             
         </>
     )
