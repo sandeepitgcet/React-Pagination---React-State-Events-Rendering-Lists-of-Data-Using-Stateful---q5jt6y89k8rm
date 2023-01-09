@@ -23,7 +23,7 @@ const PaginationButtonsList = ({activePage,changePage}) => {
     })
     return (
         <div className="pagination-buttons-list">
-            <button className='active-btn' id='button-1'>1</button>
+            <button id='button-1'>1</button>
             <button id='button-2'>2</button>
             <button id='button-3'>3</button>
             <button id='button-4'>4</button>
