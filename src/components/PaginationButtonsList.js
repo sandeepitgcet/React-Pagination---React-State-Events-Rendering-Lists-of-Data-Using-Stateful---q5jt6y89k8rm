@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
 const PaginationButtonsList = ({activePage,changePage}) => {
-    const callBack = (event) => {
-        //console.log("callBack "+event.target.innerText)
-        changePage(event.target.innerText);
-        //event.target.className="active-btn"
-    }
+    
     useEffect(()=>{
+
+        const callBack = (event) => {
+            //console.log("callBack "+event.target.innerText)
+            changePage(event.target.innerText);
+            //event.target.className="active-btn"
+        }
+        
         document.querySelectorAll('button').forEach(btn => {
             btn.addEventListener("click", callBack)
             if(activePage == btn.innerText){
@@ -17,7 +20,7 @@ const PaginationButtonsList = ({activePage,changePage}) => {
         return () => {
             document.querySelectorAll('button').forEach(btn => {
                 btn.removeEventListener("click", callBack)
-                btn.className=''
+                //btn.className=''
             })
         }
     })
